@@ -4,10 +4,10 @@ import React from "react";
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex min-h-screen">
-      <section className="bg-brand">
+      <section className="bg-brand p-10 hidden w-1/2  items-center justify-center lg:flex xl:w-2/5">
         <div>
           <Image
-            src="/logo.svg"
+            src="/assets/icons/logo-full.svg"
             alt="logo"
             width={224}
             height={84}
@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               easily and securely.
             </p>
             <Image
-              src="/Illustration.svg"
+              src="/assets/images/files.png"
               alt="illustration"
               width={342}
               height={342}
