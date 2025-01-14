@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import Link from "next/link";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -103,7 +104,17 @@ const AuthForm = ({ type }: { type: FormType }) => {
           </Button>
 
           {errorMessage && <p className="error-message">*{errorMessage}</p>}
-          <div></div>
+          <div className=" body-2 flex justify-center">
+            <p className="text-gray-500">
+              {type === "sign-in"
+                ? "Don't have an account?"
+                : "Alredy have an account?"}
+            </p>
+            <Link
+              href={type === "sign-in" ? "/sign-up" : "/sign-in"}
+              className="mr-1 font-medium text-brand"
+            />
+          </div>
         </form>
       </Form>
     </>
