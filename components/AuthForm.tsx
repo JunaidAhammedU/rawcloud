@@ -22,13 +22,28 @@ const formSchema = z.object({
 });
 
 type FormType = "sign-in" | "sign-up";
+
+const authSchema = (formType: FormType) => {
+  return z.object({
+    email: z.string().email(),
+    fullname:
+      formType === "sign-up"
+        ? z.string().min(2).max(50)
+        : z.string().optional(),
+  });
+};
+
 const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const formSchema = authSchema(type);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      fullname: "",
+      email: "",
     },
   });
 
@@ -112,8 +127,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
             </p>
             <Link
               href={type === "sign-in" ? "/sign-up" : "/sign-in"}
-              className="mr-1 font-medium text-brand"
-            />
+              className="mr-1  font-medium text-brand"
+            >
+              {type === "sign-in" ? "sign-up" : "sign-in"}
+            </Link>
           </div>
         </form>
       </Form>
