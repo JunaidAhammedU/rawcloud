@@ -1,14 +1,14 @@
+"use client";
+
 import React from "react";
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
 import {
@@ -18,7 +18,9 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import Image from "next/image";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
+import { sendEmailOTP, verifyEmailOTP } from "@/lib/actions/user.action";
+import { useRouter } from "next/navigation";
 
 const OTPModal = ({
   email,
@@ -27,16 +29,21 @@ const OTPModal = ({
   email: string;
   accountId: string;
 }) => {
+  const router = useRouter();
   const [isOpen, setIsopen] = React.useState(false);
   const [password, setPassword] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement> | any) => {
     e.preventDefault();
 
     setIsLoading(true);
 
     try {
+      const sessionId = await verifyEmailOTP({ accountId, password });
+      if (sessionId) {
+        router.push("/");
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -48,6 +55,7 @@ const OTPModal = ({
     setIsLoading(true);
 
     try {
+      await sendEmailOTP(email);
     } catch (error) {
       console.error(error);
     } finally {
@@ -92,7 +100,7 @@ const OTPModal = ({
         <AlertDialogFooter>
           <div className="flex  w-full flex-col gap-4">
             <AlertDialogAction
-              onClick={handleSubmit}
+              onClick={(e) => handleSubmit(e)}
               className="shad-submit-btn h-12"
               type="button"
             >
