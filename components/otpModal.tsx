@@ -18,6 +18,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 const OTPModal = ({
   email,
@@ -76,21 +77,49 @@ const OTPModal = ({
         </AlertDialogHeader>
         <InputOTP maxLength={6} value={password} onChange={setPassword}>
           <InputOTPGroup className="shad-otp">
-            <InputOTPSlot index={0} />
-            <InputOTPSlot index={1} />
-            <InputOTPSlot index={2} />
+            <InputOTPSlot index={0} className="shad-otp-slot" />
+            <InputOTPSlot index={1} className="shad-otp-slot" />
+            <InputOTPSlot index={2} className="shad-otp-slot" />
           </InputOTPGroup>
           <InputOTPSeparator />
           <InputOTPGroup>
-            <InputOTPSlot index={3} />
-            <InputOTPSlot index={4} />
-            <InputOTPSlot index={5} />
+            <InputOTPSlot index={3} className="shad-otp-slot" />
+            <InputOTPSlot index={4} className="shad-otp-slot" />
+            <InputOTPSlot index={5} className="shad-otp-slot" />
           </InputOTPGroup>
         </InputOTP>
 
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <div className="flex  w-full flex-col gap-4">
+            <AlertDialogAction
+              onClick={handleSubmit}
+              className="shad-submit-btn h-12"
+              type="button"
+            >
+              Submit
+              {isLoading && (
+                <Image
+                  src="/assets/icons/loader.svg"
+                  alt="loader"
+                  width={24}
+                  height={24}
+                  className="ml-2 animate-spin"
+                />
+              )}
+            </AlertDialogAction>
+
+            <div className="subtitle-2 text-center text-light-100 mt-2">
+              Didnt get the OTP?{" "}
+              <Button
+                type="button"
+                variant="link"
+                className="pl-1 text-brand"
+                onClick={handleResend}
+              >
+                Click to resend
+              </Button>
+            </div>
+          </div>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
