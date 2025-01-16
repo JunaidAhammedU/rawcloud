@@ -19,10 +19,6 @@ import Link from "next/link";
 import { createAccount } from "@/lib/actions/user.action";
 import OTPModal from "./otpModal";
 
-const formSchema = z.object({
-  username: z.string().min(2).max(50),
-});
-
 type FormType = "sign-in" | "sign-up";
 
 const authSchema = (formType: FormType) => {
