@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,18 +25,20 @@ import { useRouter } from "next/navigation";
 const OTPModal = ({
   email,
   accountId,
+  open,
+  onClose,
 }: {
   email: string;
   accountId: string;
+  open: boolean;
+  onClose: () => void;
 }) => {
   const router = useRouter();
-  const [isOpen, setIsopen] = React.useState(false);
   const [password, setPassword] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement> | any) => {
     e.preventDefault();
-
     setIsLoading(true);
 
     try {
@@ -62,8 +64,9 @@ const OTPModal = ({
       setIsLoading(false);
     }
   };
+
   return (
-    <AlertDialog open={isOpen} onOpenChange={setIsopen}>
+    <AlertDialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <AlertDialogContent className="shad-alert-dialog">
         <AlertDialogHeader className=" relative flex justify-center">
           <AlertDialogTitle className="text-center">
@@ -74,7 +77,7 @@ const OTPModal = ({
             alt="close"
             width={20}
             height={20}
-            onClick={() => setIsopen(false)}
+            onClick={onClose}
             className="otp-close-button"
           />
           <AlertDialogDescription className="subtitle-2 text-center text-light-100">
@@ -98,7 +101,7 @@ const OTPModal = ({
         </InputOTP>
 
         <AlertDialogFooter>
-          <div className="flex  w-full flex-col gap-4">
+          <div className="flex w-full flex-col gap-4">
             <AlertDialogAction
               onClick={(e) => handleSubmit(e)}
               className="shad-submit-btn h-12"
@@ -117,7 +120,7 @@ const OTPModal = ({
             </AlertDialogAction>
 
             <div className="subtitle-2 text-center text-light-100 mt-2">
-              Didnt get the OTP?{" "}
+              Didn’t get the OTP?{" "}
               <Button
                 type="button"
                 variant="link"

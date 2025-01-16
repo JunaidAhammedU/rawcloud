@@ -38,9 +38,10 @@ const authSchema = (formType: FormType) => {
 const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [accountId, setAccountId] = useState(null);
-  const formSchema = authSchema(type);
+  const [accountId, setAccountId] = useState<string | null>(null);
+  const [isOtpDialogOpen, setIsOtpDialogOpen] = useState(false);
 
+  const formSchema = authSchema(type);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -58,6 +59,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
         email: values.email || "",
       });
       setAccountId(user.accountId);
+      setIsOtpDialogOpen(true);
     } catch (error: any) {
       setErrorMessage("Failed to create account");
     } finally {
@@ -150,7 +152,12 @@ const AuthForm = ({ type }: { type: FormType }) => {
       </Form>
 
       {accountId && (
-        <OTPModal email={form.getValues("email")} accountId={accountId} />
+        <OTPModal
+          email={form.getValues("email")}
+          accountId={accountId}
+          open={isOtpDialogOpen}
+          onClose={() => setIsOtpDialogOpen(false)}
+        />
       )}
     </>
   );
