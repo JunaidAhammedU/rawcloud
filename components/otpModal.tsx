@@ -73,7 +73,7 @@ const OTPModal = ({
             Enter the OTP sent to your email
           </AlertDialogTitle>
           <Image
-            src="/close-dark.svg"
+            src="/assets/icons/close-dark.svg"
             alt="close"
             width={20}
             height={20}
@@ -91,9 +91,6 @@ const OTPModal = ({
             <InputOTPSlot index={0} className="shad-otp-slot" />
             <InputOTPSlot index={1} className="shad-otp-slot" />
             <InputOTPSlot index={2} className="shad-otp-slot" />
-          </InputOTPGroup>
-          <InputOTPSeparator />
-          <InputOTPGroup>
             <InputOTPSlot index={3} className="shad-otp-slot" />
             <InputOTPSlot index={4} className="shad-otp-slot" />
             <InputOTPSlot index={5} className="shad-otp-slot" />
