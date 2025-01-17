@@ -1,6 +1,6 @@
 "use client";
 
-import { navItems } from "@/constants";
+import { avatarPlaceholderUrl, navItems } from "@/constants";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -57,6 +57,22 @@ const Sidebar = () => {
             })}
           </ul>
         </nav>
+        <Image
+          src="/assets/images/files-2.png"
+          alt="filelogo"
+          width={506}
+          height={418}
+          className="w-full"
+        />
+        <div className="sidebar-user-info">
+          <Image
+            src={avatarPlaceholderUrl}
+            alt="avatar"
+            width={44}
+            height={44}
+            className="sidebar-user-avatar"
+          />
+        </div>
       </Link>
     </aside>
   );

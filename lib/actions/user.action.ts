@@ -5,6 +5,7 @@ import { createAdminClient } from "../appwrite";
 import { appwriteConfig } from "../appwrite/config";
 import { parseStringify } from "../utils";
 import { cookies } from "next/headers";
+import { avatarPlaceholderUrl } from "@/constants";
 
 // Get user by email
 const getUserByEmail = async (email: string) => {
@@ -47,7 +48,7 @@ export const createAccount = async ({ fullName, email }: any) => {
       {
         fullName,
         email,
-        avatar: "https://cdn-icons-png.flaticon.com/512/8184/8184173.png",
+        avatar: avatarPlaceholderUrl,
         accountId,
       }
     );
