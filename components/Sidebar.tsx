@@ -1,6 +1,7 @@
 "use client";
 
 import { navItems } from "@/constants";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -32,10 +33,24 @@ const Sidebar = () => {
             {navItems.map(({ url, name, icon }) => {
               const active = pathName === url;
               return (
-                <Link href={url} key={name}>
-                  <li>
-                    <Image src={icon} alt={name} width={24} height={24} />
-                    <p>{name}</p>
+                <Link href={url} key={name} className="lg:w-full">
+                  <li
+                    className={cn(
+                      "sidebar-nav-item",
+                      pathName === url && "shad-active"
+                    )}
+                  >
+                    <Image
+                      src={icon}
+                      alt={name}
+                      width={24}
+                      height={24}
+                      className={cn(
+                        "nav-icon",
+                        pathName === url && "nav-icon-active"
+                      )}
+                    />
+                    <p className="hidden lg:block">{name}</p>
                   </li>
                 </Link>
               );
