@@ -13,7 +13,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <Link href="#" className="sidebar">
         <Image
-          src="/accets/icons/logo-full-brand.svg"
+          src="/assets/images/rawCloud.png"
           alt="logo"
           width={160}
           height={50}
@@ -68,10 +68,13 @@ const Sidebar = () => {
           <Image
             src="/assets/images/files-2.png"
             alt="filelogo"
-            width={506}
-            height={418}
-            className="w-full"
+            width={44}
+            height={44}
           />
+          <div className="hidden lg:block">
+            <p className="subtitle-2 capitalize ">Junaid</p>
+            <p className="caption">junaid@gmail.com</p>
+          </div>
         </div>
       </Link>
     </aside>
