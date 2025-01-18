@@ -81,6 +81,7 @@ export const verifyEmailOTP = async ({
 
 export const getCurrentUser = async () => {
   const { databases, account } = await createAdminClient();
+
   try {
     const result = await account.get();
     const user = await databases.listDocuments(
@@ -88,9 +89,10 @@ export const getCurrentUser = async () => {
       appwriteConfig.usersCollectionId,
       [Query.equal("accountId", result.$id)]
     );
+
     if (user.total <= 0) throw new Error("User not found");
     return parseStringify(user.documents[0]);
   } catch (error) {
-    handleError(error, "Failed to get current user");
+    throw error; // Ensure the error is propagated
   }
 };

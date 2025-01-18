@@ -1,13 +1,17 @@
+import { redirect } from "next/navigation";
 import Header from "@/components/Header";
 import MobileNavigation from "@/components/MobileNavigation";
 import Sidebar from "@/components/Sidebar";
 import { getCurrentUser } from "@/lib/actions/user.action";
-import { redirect } from "next/navigation";
-import React from "react";
 
 const layout = async ({ children }: { children: React.ReactNode }) => {
-  const currentUser = await getCurrentUser();
-  if (!currentUser) redirect("/sign-in");
+  try {
+    const currentUser = await getCurrentUser();
+    if (!currentUser) redirect("/sign-in");
+  } catch (error) {
+    redirect("/sign-in");
+  }
+
   return (
     <main className="flex h-screen">
       <Sidebar />
