@@ -37,6 +37,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const [accountId, setAccountId] = useState<string | null>(null);
   const [isOtpDialogOpen, setIsOtpDialogOpen] = useState(false);
 
+  // form schema.
   const formSchema = authSchema(type);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
