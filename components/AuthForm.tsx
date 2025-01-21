@@ -46,6 +46,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
     },
   });
 
+  // on submit.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     setErrorMessage("");
