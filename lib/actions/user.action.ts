@@ -10,13 +10,16 @@ import { avatarPlaceholderUrl } from "@/constants";
 // Get user by email
 const getUserByEmail = async (email: string) => {
   const { databases } = await createAdminClient();
-  const result = await databases.listDocuments(
-    appwriteConfig.databaseId,
-    appwriteConfig.usersCollectionId,
-    [Query.equal("email", [email])]
-  );
-
-  return result.total > 0 ? result.documents[0] : null;
+  try {
+    const result = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.usersCollectionId,
+      [Query.equal("email", [email])]
+    );
+    return result.total > 0 ? result.documents[0] : null;
+  } catch (error) {
+    throw new Error("Collection with the requested ID could not be found.");
+  }
 };
 
 const handleError = (error: any, message: string) => {
