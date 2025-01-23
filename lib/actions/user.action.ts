@@ -85,6 +85,7 @@ export const verifyEmailOTP = async ({
   }
 };
 
+// Get current user
 export const getCurrentUser = async () => {
   const { databases, account } = await createAdminClient();
 
