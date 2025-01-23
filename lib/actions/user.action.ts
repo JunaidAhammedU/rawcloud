@@ -7,7 +7,6 @@ import { parseStringify } from "../utils";
 import { cookies } from "next/headers";
 import { avatarPlaceholderUrl } from "@/constants";
 
-// Get user by email
 const getUserByEmail = async (email: string) => {
   const { databases } = await createAdminClient();
   try {
@@ -22,6 +21,7 @@ const getUserByEmail = async (email: string) => {
   }
 };
 
+// Handle errors
 const handleError = (error: any, message: string) => {
   console.error(error);
   throw new Error(message);
