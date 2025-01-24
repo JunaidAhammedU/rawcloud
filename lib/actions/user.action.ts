@@ -46,6 +46,7 @@ export const createAccount = async ({ fullName, email }: any) => {
   if (!existingUser) {
     const { databases } = await createAdminClient();
 
+    // Create user
     await databases.createDocument(
       appwriteConfig.databaseId,
       appwriteConfig.usersCollectionId,
