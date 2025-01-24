@@ -31,6 +31,7 @@ const handleError = (error: any, message: string) => {
 export const sendEmailOTP = async (email: string) => {
   const { account } = await createAdminClient();
   try {
+    // Create email verification
     const session = await account.createEmailToken(ID.unique(), email);
     return session.userId;
   } catch (error) {
