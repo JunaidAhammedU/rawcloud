@@ -100,6 +100,6 @@ export const getCurrentUser = async () => {
     if (user.total <= 0) throw new Error("User not found");
     return parseStringify(user.documents[0]);
   } catch (error) {
-    throw error; // Ensure the error is propagated
+    throw error;
   }
 };
