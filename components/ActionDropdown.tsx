@@ -25,11 +25,18 @@ import Link from "next/link";
 import { constructDownloadUrl } from "@/lib/utils";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import { set } from "react-hook-form";
+import { renameFile } from "@/lib/actions/file.actions";
+import { usePathname } from "next/navigation";
 
 const ActionDropdown = ({ file }: { file: Models.Document }) => {
+  const path = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [actions, setActions] = useState(null);
+  const [actions, setActions] = useState<{
+    value: "rename" | "delete" | "share";
+    label: string;
+  } | null>(null);
   const [name, setName] = useState(file?.name);
   const [loading, setLoading] = useState(false);
 
@@ -40,7 +47,28 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     setName(file?.name);
   };
 
-  const handleAction = async () => {};
+  const handleAction = async () => {
+    if (!actions) return;
+    setLoading(true);
+    let success: any = false;
+
+    const action = {
+      rename: async () => {
+        return await renameFile({
+          fileId: file.$id,
+          name: name,
+          extension: file.extension,
+          path,
+        });
+      },
+      delete: async () => {},
+      share: async () => {},
+    };
+    success = await action[actions.value]();
+
+    if (success) closeAllModel();
+    setLoading(false);
+  };
 
   const renderDialogContent = () => {
     if (!actions) return null;
