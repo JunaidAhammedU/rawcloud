@@ -1,7 +1,7 @@
 "use server";
 
 import { ID, Query } from "node-appwrite";
-import { createAdminClient } from "../appwrite";
+import { createAdminClient, createSessionClient } from "../appwrite";
 import { appwriteConfig } from "../appwrite/config";
 import { parseStringify } from "../utils";
 import { cookies } from "next/headers";
@@ -86,7 +86,7 @@ export const verifyEmailOTP = async ({
 
 // Get current user
 export const getCurrentUser = async () => {
-  const { databases, account } = await createAdminClient();
+  const { databases, account } = await createSessionClient();
 
   try {
     const result = await account.get();
