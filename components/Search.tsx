@@ -29,8 +29,11 @@ const Search = () => {
     if (!searchQuery) {
       setQuery("");
     }
-    // Call your search API here
   }, [searchQuery]);
+
+  // handle click item
+  const handleClickItem = (file: Models.Document) => {};
+
   return (
     <div className="search">
       <div className="search-input-wrapper">
