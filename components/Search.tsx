@@ -18,7 +18,7 @@ const Search = () => {
 
   useEffect(() => {
     const fetchFiles = async () => {
-      const files = await getFile({ searchText: query });
+      const files = await getFile({ types: [], searchText: query });
       setResult(files.documents);
       setOpen(true);
     };
