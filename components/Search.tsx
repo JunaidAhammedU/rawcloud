@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { getFile } from "@/lib/actions/file.actions";
 import { Models } from "node-appwrite";
 import Thumbnail from "./Thumbnail";
+import FormattedDateTime from "./FormattedDateTime";
 
 const Search = () => {
   const [query, setQuery] = useState<string>("");
@@ -65,6 +66,10 @@ const Search = () => {
                       {file.name}
                     </p>
                   </div>
+                  <FormattedDateTime
+                    date={file?.$createdAt}
+                    className="caption line-clamp-1 text-light-200"
+                  />
                 </li>
               ))
             ) : (
