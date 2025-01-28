@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Input } from "./ui/input";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { getFile } from "@/lib/actions/file.actions";
 import { Models } from "node-appwrite";
 import Thumbnail from "./Thumbnail";
@@ -11,6 +11,7 @@ import FormattedDateTime from "./FormattedDateTime";
 
 const Search = () => {
   const router = useRouter();
+  const path = usePathname();
   const [query, setQuery] = useState<string>("");
   const searchParams = useSearchParams();
   const searchQuery: any = searchParams.get("query") || "";
@@ -21,7 +22,7 @@ const Search = () => {
     if (!query) {
       setResult([]);
       setOpen(false);
-      return router.push();
+      return router.push(path);
     }
     const fetchFiles = async () => {
       const files = await getFile({ types: [], searchText: query });
