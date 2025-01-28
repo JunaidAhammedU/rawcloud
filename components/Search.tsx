@@ -38,7 +38,7 @@ const Search = () => {
     setResult([]);
 
     router.push(
-      `/${file.type === "video" ? "media" : file.type + "s"}?query=${query} `
+      `/${file.type === "video" || file.type === "audio" ? "media" : file.type + "s"}?query=${query} `
     );
   };
 
