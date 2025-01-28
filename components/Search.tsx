@@ -18,6 +18,11 @@ const Search = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    if (!query) {
+      setResult([]);
+      setOpen(false);
+      return router.push();
+    }
     const fetchFiles = async () => {
       const files = await getFile({ types: [], searchText: query });
       setResult(files.documents);
