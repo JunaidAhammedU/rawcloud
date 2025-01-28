@@ -3,13 +3,14 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Input } from "./ui/input";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getFile } from "@/lib/actions/file.actions";
 import { Models } from "node-appwrite";
 import Thumbnail from "./Thumbnail";
 import FormattedDateTime from "./FormattedDateTime";
 
 const Search = () => {
+  const router = useRouter();
   const [query, setQuery] = useState<string>("");
   const searchParams = useSearchParams();
   const searchQuery: any = searchParams.get("query") || "";
@@ -32,7 +33,14 @@ const Search = () => {
   }, [searchQuery]);
 
   // handle click item
-  const handleClickItem = (file: Models.Document) => {};
+  const handleClickItem = (file: Models.Document) => {
+    setOpen(false);
+    setResult([]);
+
+    router.push(
+      `/${file.type === "video" ? "media" : file.type + "s"}?query=${query} `
+    );
+  };
 
   return (
     <div className="search">
@@ -57,6 +65,7 @@ const Search = () => {
                 <li
                   key={file.$id}
                   className="flex items-center justify-between"
+                  onClick={() => handleClickItem(file)}
                 >
                   <div className="flex cursor-pointer items-center gap-4">
                     <Thumbnail
