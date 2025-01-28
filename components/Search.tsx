@@ -22,7 +22,7 @@ const Search = () => {
     if (!query) {
       setResult([]);
       setOpen(false);
-      return router.push(path);
+      return router.push(path.replace(searchParams.toString(), ""));
     }
     const fetchFiles = async () => {
       const files = await getFile({ types: [], searchText: query });
