@@ -18,6 +18,7 @@ const Search = () => {
   const [result, setResult] = useState<Models.Document[]>([]);
   const [open, setOpen] = useState(false);
 
+  // fetch files
   useEffect(() => {
     if (!query) {
       setResult([]);
