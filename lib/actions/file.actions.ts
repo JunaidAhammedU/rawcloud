@@ -119,6 +119,7 @@ export const getFile = async ({
   }
 };
 
+// Rename file
 export const renameFile = async ({
   fileId,
   name,
