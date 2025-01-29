@@ -171,6 +171,7 @@ export const updateFileUsers = async ({
   }
 };
 
+// Delete file
 export const deleteFile = async ({
   fileId,
   bucketFileId,
