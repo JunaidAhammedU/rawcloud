@@ -33,6 +33,7 @@ const Search = () => {
     fetchFiles();
   }, [query]);
 
+  // clear search query
   useEffect(() => {
     if (!searchQuery) {
       setQuery("");
