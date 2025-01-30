@@ -146,7 +146,6 @@ export const renameFile = async ({
   }
 };
 
-// Update file users
 export const updateFileUsers = async ({
   fileId,
   emails,
