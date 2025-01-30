@@ -100,7 +100,6 @@ export const getFile = async ({
   const { databases } = await createAdminClient();
 
   try {
-    // Get current user
     const currentUser = await getCurrentUser();
     if (!currentUser) {
       throw new Error("User not found");
