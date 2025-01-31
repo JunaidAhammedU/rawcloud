@@ -8,6 +8,7 @@ import { cookies } from "next/headers";
 import { avatarPlaceholderUrl } from "@/constants";
 import { redirect } from "next/navigation";
 
+// Get user by email
 const getUserByEmail = async (email: string) => {
   const { databases } = await createAdminClient();
   try {
