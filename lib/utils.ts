@@ -4,11 +4,13 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
 export const parseStringify = (value: unknown) =>
   JSON.parse(JSON.stringify(value));
 
 export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
 
+// FILE UTILS
 export const convertFileSize = (sizeInBytes: number, digits?: number) => {
   if (sizeInBytes < 1024) {
     return sizeInBytes + " Bytes"; // Less than 1 KB, show in Bytes
