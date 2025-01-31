@@ -39,6 +39,7 @@ export const sendEmailOTP = async (email: string) => {
   }
 };
 
+// create account with email
 export const createAccount = async ({ fullName, email }: any) => {
   const existingUser = await getUserByEmail(email);
   const accountId = await sendEmailOTP(email);
