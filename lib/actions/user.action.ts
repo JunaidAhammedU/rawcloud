@@ -120,6 +120,7 @@ export const signOutUser = async () => {
   }
 };
 
+// sign out user
 export const signInUser = async ({ email, password }: any) => {
   try {
     const existingUser = await getUserByEmail(email);
