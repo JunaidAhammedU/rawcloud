@@ -106,6 +106,7 @@ export const getCurrentUser = async () => {
   }
 };
 
+// sign out user
 export const signOutUser = async () => {
   const { account } = await createSessionClient();
 
