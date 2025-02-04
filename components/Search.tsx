@@ -22,18 +22,18 @@ const Search = () => {
 
   // fetch files
   useEffect(() => {
-    if (!query) {
+    if (debouncedQuery.length === 0) {
       setResult([]);
       setOpen(false);
       return router.push(path.replace(searchParams.toString(), ""));
     }
     const fetchFiles = async () => {
-      const files = await getFile({ types: [], searchText: query });
+      const files = await getFile({ types: [], searchText: debouncedQuery });
       setResult(files.documents);
       setOpen(true);
     };
     fetchFiles();
-  }, [query]);
+  }, [debouncedQuery]);
 
   // clear search query
   useEffect(() => {
