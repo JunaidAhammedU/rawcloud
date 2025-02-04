@@ -27,7 +27,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
         />
 
         <Image
-          src="/accets/icons/logo-brand.svg"
+          src="/assets/images/rawCloud.png"
           alt="logo"
           width={52}
           height={52}
