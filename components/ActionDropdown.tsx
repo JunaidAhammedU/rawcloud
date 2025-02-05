@@ -46,7 +46,6 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [name, setName] = useState(file?.name);
   const [loading, setLoading] = useState(false);
 
-  // Close all modals and dropdowns
   const closeAllModel = () => {
     setIsModalOpen(false);
     setIsDropdownOpen(false);
