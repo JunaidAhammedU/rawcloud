@@ -87,6 +87,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     setLoading(false);
   };
 
+  // Handle remove user
   const handleRemoveUser = async (email: string) => {
     const updatedEmails = emails.filter((e) => e !== email);
     const response = await updateFileUsers({
