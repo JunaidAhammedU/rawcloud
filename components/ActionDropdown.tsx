@@ -99,7 +99,6 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     closeAllModel();
   };
 
-  // Render dialog content in dynamic way
   const renderDialogContent = () => {
     if (!actions) return null;
 
