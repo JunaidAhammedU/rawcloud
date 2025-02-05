@@ -54,7 +54,6 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     setName(file?.name);
   };
 
-  // Handle action
   const handleAction = async () => {
     if (!actions) return;
     setLoading(true);
