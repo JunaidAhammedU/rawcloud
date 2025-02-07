@@ -99,6 +99,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     closeAllModel();
   };
 
+  // handle dialog
   const renderDialogContent = () => {
     if (!actions) return null;
 
