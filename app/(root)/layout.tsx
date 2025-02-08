@@ -4,6 +4,7 @@ import MobileNavigation from "@/components/MobileNavigation";
 import Sidebar from "@/components/Sidebar";
 import { getCurrentUser } from "@/lib/actions/user.action";
 import { Toaster } from "@/components/ui/toaster";
+export const dynamic = "force-dynamic";
 
 const layout = async ({ children }: { children: React.ReactNode }) => {
   const currentUser = await getCurrentUser();
