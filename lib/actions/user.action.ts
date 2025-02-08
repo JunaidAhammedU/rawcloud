@@ -89,9 +89,8 @@ export const verifyEmailOTP = async ({
 
 // Get current user
 export const getCurrentUser = async () => {
-  const { databases, account } = await createSessionClient();
-
   try {
+    const { databases, account } = await createSessionClient();
     const result = await account.get();
     const user = await databases.listDocuments(
       appwriteConfig.databaseId,
