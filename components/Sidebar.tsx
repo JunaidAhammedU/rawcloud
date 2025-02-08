@@ -5,7 +5,12 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
 import React from "react";
+import { Outfit } from "next/font/google";
 
 interface Props {
   fullName: string;
@@ -16,16 +21,20 @@ interface Props {
 const Sidebar = ({ fullName, avatar, email }: Props) => {
   const pathName = usePathname();
   return (
-    <aside className="sidebar">
+    <aside className="h-screen sticky top-0 overflow-hidden">
       <Link href="#" className="sidebar">
-        <Image
-          src="/assets/images/rawCloud.png"
-          alt="logo"
-          width={160}
-          height={50}
-          className="hidden h-auto md:block"
-        />
-
+        <div className="flex gap-5 items-center">
+          <Image
+            src="/assets/images/rawCloud.png"
+            alt="logo"
+            width={100}
+            height={100}
+            className="hidden h-auto md:block"
+          />
+          <h1 className={`${outfit.variable} text-2xl font-semibold`}>
+            Raw cloud
+          </h1>
+        </div>
         <Image
           src="/assets/images/rawCloud.png"
           alt="logo"
@@ -63,13 +72,6 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
             })}
           </ul>
         </nav>
-        <Image
-          src="/assets/images/files-2.png"
-          alt="filelogo"
-          width={506}
-          height={418}
-          className="w-full"
-        />
         <div className="sidebar-user-info">
           <Image
             src="/assets/images/avatar.png"

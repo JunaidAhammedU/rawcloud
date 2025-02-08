@@ -1,6 +1,6 @@
 export const navItems = [
   {
-    name: "Dashboard",
+    name: "Overview",
     icon: "/assets/icons/dashboard.svg",
     url: "/",
   },
