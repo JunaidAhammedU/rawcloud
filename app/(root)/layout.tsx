@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 const layout = async ({ children }: { children: React.ReactNode }) => {
   const currentUser = await getCurrentUser();
-  if (!currentUser) redirect("/sign-in");
+  if (!currentUser) return redirect("/sign-in");
   return (
     <main className="flex h-screen">
       <Sidebar {...currentUser} />
