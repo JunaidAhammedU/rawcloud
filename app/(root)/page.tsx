@@ -1,3 +1,4 @@
+import { Chart } from "@/components/Chart";
 import OverviewFileCard from "@/components/OverviewFileCard";
 import { overViewItems } from "@/constants";
 
@@ -10,6 +11,9 @@ export default async function Home() {
             {overViewItems.map((item: any) => (
               <OverviewFileCard key={item.url} items={item} />
             ))}
+          </section>
+          <section className="mt-2 w-1/2">
+            <Chart />
           </section>
         </div>
       </div>
