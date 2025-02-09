@@ -26,6 +26,33 @@ export const navItems = [
   },
 ];
 
+export const overViewItems = [
+  {
+    name: "Documents",
+    icon: "/assets/icons/documents.svg",
+    url: "/documents",
+    color: "bg-[#FEEED4]",
+  },
+  {
+    name: "Images",
+    icon: "/assets/icons/images.svg",
+    url: "/images",
+    color: "bg-[#FFDFF1]",
+  },
+  {
+    name: "Media",
+    icon: "/assets/icons/video.svg",
+    url: "/media",
+    color: "bg-[#E7D8FD]",
+  },
+  {
+    name: "Others",
+    icon: "/assets/icons/others.svg",
+    url: "/others",
+    color: "bg-[#DFECFE]",
+  },
+];
+
 export const actionsDropdownItems = [
   {
     label: "Rename",
