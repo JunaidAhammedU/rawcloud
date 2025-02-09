@@ -1,3 +1,5 @@
+import { SiFiles } from "react-icons/si";
+
 export const navItems = [
   {
     name: "Overview",
@@ -31,25 +33,25 @@ export const overViewItems = [
     name: "Documents",
     icon: "/assets/icons/documents.svg",
     url: "/documents",
-    color: "bg-[#FEEED4]",
+    styl: "text-3xl text-[#FEEED4]",
   },
   {
     name: "Images",
     icon: "/assets/icons/images.svg",
     url: "/images",
-    color: "bg-[#FFDFF1]",
+    styl: "text-3xl text-[#FFDFF1]",
   },
   {
     name: "Media",
     icon: "/assets/icons/video.svg",
     url: "/media",
-    color: "bg-[#E7D8FD]",
+    styl: "text-3xl text-[#E7D8FD]",
   },
   {
     name: "Others",
     icon: "/assets/icons/others.svg",
     url: "/others",
-    color: "bg-[#DFECFE]",
+    styl: "text-3xl text-[#DFECFE]",
   },
 ];
 
