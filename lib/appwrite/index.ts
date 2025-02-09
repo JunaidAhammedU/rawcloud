@@ -27,7 +27,6 @@ export const createSessionClient = async () => {
       },
     };
   } catch (error) {
-    console.error("Failed to create session client:", error);
     throw error;
   }
 };
