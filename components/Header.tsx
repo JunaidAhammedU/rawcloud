@@ -8,13 +8,14 @@ import { signOutUser } from "@/lib/actions/user.action";
 interface Props {
   userId: string;
   accountId: string;
+  hideSearch: string;
 }
 
-const Header = ({ userId, accountId }: Props) => {
+const Header = ({ userId, accountId, hideSearch }: Props) => {
   return (
     <header className="header">
-      <Search />
-      <div className="header-wrapper ">
+      {hideSearch === "/" ? <div></div> : <Search />}
+      <div className="header-wrapper">
         <FileUploader ownerId={userId} accountId={accountId} />
         <form
           action={async () => {
