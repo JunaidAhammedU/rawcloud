@@ -11,6 +11,7 @@ const outfit = Outfit({
 });
 import React from "react";
 import { Outfit } from "next/font/google";
+import StorageUsage from "./StorageUsage";
 
 interface Props {
   fullName: string;
@@ -72,6 +73,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
             })}
           </ul>
         </nav>
+        <StorageUsage used={7} total={2} />
         <div className="sidebar-user-info">
           <Image
             src="/assets/images/avatar.png"
