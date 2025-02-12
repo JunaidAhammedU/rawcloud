@@ -9,9 +9,11 @@ const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
 });
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Outfit } from "next/font/google";
 import StorageUsage from "./StorageUsage";
+import { formatStorageSize } from "@/lib/utils";
+import { getStorageUsage } from "@/lib/actions/file.actions";
 
 interface Props {
   fullName: string;
@@ -21,6 +23,16 @@ interface Props {
 
 const Sidebar = ({ fullName, avatar, email }: Props) => {
   const pathName = usePathname();
+  const [usage, setUsage] = useState<any>(null);
+
+  useEffect(() => {
+    async function fetchStorageUsage() {
+      const data = await getStorageUsage();
+      setUsage(data);
+    }
+    fetchStorageUsage();
+  }, [fullName, email]);
+
   return (
     <aside className="h-screen sticky top-0 overflow-hidden">
       <Link href="#" className="sidebar">
@@ -73,7 +85,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
             })}
           </ul>
         </nav>
-        <StorageUsage used={7} total={2} />
+        <StorageUsage used={1000} />
         <div className="sidebar-user-info">
           <Image
             src="/assets/images/avatar.png"

@@ -2,11 +2,9 @@ import OverviewFileCard from "@/components/OverviewFileCard";
 import RecentTables from "@/components/RecentTables";
 import { overViewItems } from "@/constants";
 import { getRecentFiles, getStorageUsage } from "@/lib/actions/file.actions";
-import { formatStorageSize } from "@/lib/utils";
 
 export default async function Home() {
   const data: any = await getRecentFiles(10);
-  const usage: any = await getStorageUsage();
   return (
     <>
       <div className="h-screen">
