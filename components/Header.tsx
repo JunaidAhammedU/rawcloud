@@ -14,7 +14,7 @@ interface Props {
 const Header = ({ userId, accountId, hideSearch }: Props) => {
   return (
     <header className="header">
-      {hideSearch === "/" ? <div></div> : <Search />}
+      <Search />
       <div className="header-wrapper">
         <FileUploader ownerId={userId} accountId={accountId} />
         <form

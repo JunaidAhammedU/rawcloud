@@ -7,12 +7,11 @@ export default async function Home() {
     <>
       <div className="h-screen">
         <div className="">
-          <Search />
-          {/* <section className="file-list">
+          <section className="file-list">
             {overViewItems.map((item: any) => (
               <OverviewFileCard key={item.url} items={item} />
             ))}
-          </section> */}
+          </section>
         </div>
       </div>
     </>
