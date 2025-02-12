@@ -26,6 +26,18 @@ export const convertFileSize = (sizeInBytes: number, digits?: number) => {
   }
 };
 
+export const formatStorageSize = (bytes: number): string => {
+  const units = ["Bytes", "KB", "MB", "GB", "TB"];
+  let index = 0;
+
+  while (bytes >= 1024 && index < units.length - 1) {
+    bytes /= 1024;
+    index++;
+  }
+
+  return `${bytes.toFixed(2)} ${units[index]}`;
+};
+
 // Calculate percentage of file size
 export const calculatePercentage = (sizeInBytes: number) => {
   const totalSizeInBytes = 2 * 1024 * 1024 * 1024; // 2GB in bytes

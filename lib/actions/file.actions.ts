@@ -4,11 +4,9 @@ import { createAdminClient } from "../appwrite";
 import { InputFile } from "node-appwrite/file";
 import { appwriteConfig } from "../appwrite/config";
 import { ID, Models, Query } from "node-appwrite";
-import { get } from "http";
 import { constructFileUrl, getFileType, parseStringify } from "../utils";
 import { revalidatePath } from "next/cache";
 import { getCurrentUser } from "./user.action";
-import path from "path";
 
 // Handle errors
 const handleError = (error: any, message: string) => {
@@ -191,5 +189,59 @@ export const deleteFile = async ({
     return parseStringify({ status: "success" });
   } catch (error) {
     handleError(error, "Failed to rename file");
+  }
+};
+
+export const getRecentFiles = async (limit: number = 10) => {
+  const { databases } = await createAdminClient();
+  try {
+    const currentUser = await getCurrentUser();
+    if (!currentUser) {
+      throw new Error("User not found");
+    }
+    const queries = [
+      Query.or([
+        Query.equal("owner", [currentUser.$id]),
+        Query.contains("users", [currentUser.email]),
+      ]),
+      Query.orderDesc("$createdAt"),
+      Query.limit(limit),
+    ];
+    const recentFiles = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.filesCollectionId,
+      queries
+    );
+    return parseStringify(recentFiles);
+  } catch (error) {
+    handleError(error, "Failed to fetch recent files");
+  }
+};
+
+export const getStorageUsage = async () => {
+  const { databases } = await createAdminClient();
+  try {
+    const currentUser = await getCurrentUser();
+    if (!currentUser) {
+      throw new Error("User not found");
+    }
+    const queries = [
+      Query.or([
+        Query.equal("owner", [currentUser.$id]),
+        Query.contains("users", [currentUser.email]),
+      ]),
+    ];
+    const files = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.filesCollectionId,
+      queries
+    );
+    const storageUsage = files.documents.reduce(
+      (acc: number, file: any) => acc + (file.size || 0),
+      0
+    );
+    return parseStringify({ storageUsage });
+  } catch (error) {
+    handleError(error, "Failed to get storage usage");
   }
 };

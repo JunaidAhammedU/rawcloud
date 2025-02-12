@@ -1,8 +1,12 @@
 import OverviewFileCard from "@/components/OverviewFileCard";
+import RecentTables from "@/components/RecentTables";
 import { overViewItems } from "@/constants";
-import Search from "@/components/Search";
+import { getRecentFiles, getStorageUsage } from "@/lib/actions/file.actions";
+import { formatStorageSize } from "@/lib/utils";
 
 export default async function Home() {
+  const data: any = await getRecentFiles(10);
+  const usage: any = await getStorageUsage();
   return (
     <>
       <div className="h-screen">
@@ -11,6 +15,10 @@ export default async function Home() {
             {overViewItems.map((item: any) => (
               <OverviewFileCard key={item.url} items={item} />
             ))}
+          </section>
+          <section className="file-list-table">
+            <h1 className="text-xl font-semibold py-2">Recent Files</h1>
+            <RecentTables data={data} />
           </section>
         </div>
       </div>

@@ -250,6 +250,9 @@
   .file-list {
     @apply grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 !important;
   }
+  .file-list-table {
+    @apply grid w-full sm:grid-cols-1 lg:grid-cols-1 py-5 !important;
+  }
   .sort-container {
     @apply mt-5 flex items-center sm:mt-0 sm:gap-3 !important;
   }
