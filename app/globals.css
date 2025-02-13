@@ -360,6 +360,9 @@
   .error-toast {
     @apply bg-red !rounded-[10px] !important;
   }
+  .success-toast {
+    @apply bg-green !rounded-[10px] !important;
+  }
 
   /* Header */
   .header {

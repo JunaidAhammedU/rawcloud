@@ -41,14 +41,14 @@ const FileUploader = ({ ownerId, accountId, className }: any) => {
                 prevFiles.filter((f) => f.name !== file.name)
               );
 
-              // return toast({
-              //   description: (
-              //     <p className="body-2 text-white">
-              //       <span className="font-semibold ">{file.name}</span> uploaded
-              //     </p>
-              //   ),
-              //   className: "success-toast",
-              // });
+              return toast({
+                description: (
+                  <p className="body-2 text-white">
+                    <span className="font-semibold ">{file.name}</span> uploaded
+                  </p>
+                ),
+                className: "success-toast",
+              });
             }
           }
         );

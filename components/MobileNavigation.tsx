@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Sheet,
   SheetContent,
@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 import { Separator } from "./ui/separator";
 import { navItems } from "@/constants";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn, formatStorageSize } from "@/lib/utils";
 import { Button } from "./ui/button";
 import FileUploader from "./FileUploader";
 import { signOutUser } from "@/lib/actions/user.action";
@@ -21,6 +21,8 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 import { Outfit } from "next/font/google";
+import StorageUsage from "./StorageUsage";
+import { getStorageUsage } from "@/lib/actions/file.actions";
 interface Props {
   $id: string;
   accountId: string;
@@ -37,6 +39,15 @@ const MobileNavigation = ({
 }: Props) => {
   const [open, setOpen] = useState(false);
   const pathName = usePathname();
+  const [usage, setUsage] = useState<any>(null);
+
+  useEffect(() => {
+    async function fetchStorageUsage() {
+      const data = await getStorageUsage();
+      setUsage(data);
+    }
+    fetchStorageUsage();
+  }, [fullName, email]);
   return (
     <header className="mobile-header">
       <div className="flex gap-1 items-center">
@@ -75,9 +86,9 @@ const MobileNavigation = ({
                 <p className="subtitle-2 capitalize">{fullName}</p>
                 <p className="caption">{email}</p>
               </div>
-              <Separator className="mb-4 bg-light-200/20 " />
             </div>
           </SheetTitle>
+          <Separator className="mb-4 bg-light-200/20 " />
           <nav className="mobile-nav">
             <ul className="mobile-nav-list">
               {navItems.map(({ url, name, icon }) => {
@@ -107,8 +118,10 @@ const MobileNavigation = ({
               })}
             </ul>
           </nav>
-          <Separator className="my-5 bg-light-200/20 " />
-          <div className="flex flex-col justify-between gap-5">
+          <Separator className=" bg-light-200/20 " />
+          <StorageUsage used={formatStorageSize(usage?.storageUsage) || 0} />
+
+          <div className="flex flex-col justify-between gap-2">
             <FileUploader ownerId={ownerId} accountId={accountId} />
             <Button
               type="submit"
