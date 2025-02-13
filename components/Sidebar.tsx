@@ -85,7 +85,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
             })}
           </ul>
         </nav>
-        <StorageUsage used={1000} />
+        <StorageUsage used={formatStorageSize(usage?.storageUsage) || 0} />
         <div className="sidebar-user-info">
           <Image
             src="/assets/images/avatar.png"
