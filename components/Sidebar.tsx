@@ -9,8 +9,8 @@ const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
 });
-import React, { useEffect, useState } from "react";
 import { Outfit } from "next/font/google";
+import React, { useEffect, useState } from "react";
 import StorageUsage from "./StorageUsage";
 import { formatStorageSize } from "@/lib/utils";
 import { getStorageUsage } from "@/lib/actions/file.actions";

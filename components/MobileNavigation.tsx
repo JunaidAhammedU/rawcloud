@@ -16,7 +16,11 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import FileUploader from "./FileUploader";
 import { signOutUser } from "@/lib/actions/user.action";
-
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
+import { Outfit } from "next/font/google";
 interface Props {
   $id: string;
   accountId: string;
@@ -35,13 +39,19 @@ const MobileNavigation = ({
   const pathName = usePathname();
   return (
     <header className="mobile-header">
-      <Image
-        src="/assets/images/rawmobile.png"
-        alt="logo"
-        width={120}
-        height={52}
-        className="object-cover"
-      />
+      <div className="flex gap-1 items-center">
+        <Image
+          src="/assets/images/rawCloud.png"
+          alt="logo"
+          width={62}
+          height={32}
+          className="object-cover"
+        />
+        <h1 className={`${outfit.variable} text-lg font-semibold`}>
+          Raw cloud
+        </h1>
+      </div>
+
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger>
           <Image
