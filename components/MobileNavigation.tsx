@@ -122,7 +122,7 @@ const MobileNavigation = ({
           <StorageUsage used={formatStorageSize(usage?.storageUsage) || 0} />
 
           <div className="flex flex-col justify-between gap-5">
-            <div>
+            <div className="mt-2 bg-red">
               <FileUploader ownerId={ownerId} accountId={accountId} />
             </div>
             <Button
