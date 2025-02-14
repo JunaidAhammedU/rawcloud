@@ -121,8 +121,8 @@ const MobileNavigation = ({
           <Separator className=" bg-light-200/20 " />
           <StorageUsage used={formatStorageSize(usage?.storageUsage) || 0} />
 
-          <div className="flex flex-col justify-between gap-5">
-            <div className="flex p-2 pt-3 items-center justify-center">
+          <div className="flex flex-col justify-between gap-3">
+            <div className="flex p-5 items-center justify-center bg-red">
               <FileUploader ownerId={ownerId} accountId={accountId} />
             </div>
             <Button
