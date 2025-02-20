@@ -64,7 +64,7 @@ export const createAccount = async ({ fullName, email }: any) => {
   return parseStringify({ accountId });
 };
 
-// Verify email OTP
+// Verify Email OTP
 export const verifyEmailOTP = async ({
   accountId,
   password,
