@@ -29,6 +29,7 @@ const handleError = (error: any, message: string) => {
   throw new Error(message);
 };
 
+// send Email Otp
 export const sendEmailOTP = async (email: string) => {
   const { account } = await createAdminClient();
   try {
