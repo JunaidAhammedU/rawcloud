@@ -88,7 +88,7 @@ export const verifyEmailOTP = async ({
   }
 };
 
-// Get current user
+// Get Current user
 export const getCurrentUser = async () => {
   try {
     const { databases, account } = await createSessionClient();
