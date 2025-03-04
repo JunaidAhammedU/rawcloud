@@ -3,44 +3,70 @@ import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex min-h-screen">
-      <section className="bg-brand p-10 hidden w-1/2  items-center justify-center lg:flex xl:w-2/5">
-        <div className="flex max-h-[800px] max-w-[430px] flex-col justify-center space-y-12">
-          <Image
-            src="/assets/icons/logo-full.svg"
-            alt="logo"
-            width={224}
-            height={84}
-            className="h-auto"
-          />
-          <div className="space-y-5 text-white">
-            <h1 className="h1"> Manage your files easily and securely</h1>
-            <p className="body-1">
-              This is a cloud storage app that allows you to manage your files
-              easily and securely.
-            </p>
-            <Image
-              src="/assets/images/files.png"
-              alt="illustration"
-              width={342}
-              height={342}
-              className="transition-all hover:rotate-2 hover:scale-105"
-            />
+    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute left-20 top-20 h-40 w-40 animate-float rounded-full bg-blue-100/30 blur-3xl" />
+        <div className="absolute right-20 top-40 h-32 w-32 animate-float-delay rounded-full bg-purple-100/30 blur-3xl" />
+        <div className="absolute bottom-20 left-1/3 h-36 w-36 animate-float rounded-full bg-pink-100/30 blur-3xl" />
+      </div>
+
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[url('/assets/patterns/grid.svg')] opacity-5" />
+
+      {/* Main content */}
+      <div className="relative flex min-h-screen w-full items-center justify-center p-4">
+        <div className="w-full max-w-md">
+          {/* Logo and brand */}
+          <div className="mb-8 text-center">
+            <div className="mb-6 flex justify-center">
+              <div className="relative">
+                <div className="absolute -inset-4 animate-pulse rounded-full bg-brand/10" />
+                <Image
+                  src="/assets/icons/logo-full.svg"
+                  alt="Raw Cloud"
+                  width={160}
+                  height={50}
+                  className="relative"
+                />
+              </div>
+            </div>
+            <h2 className="flex items-center justify-center gap-2 text-xl font-medium text-gray-600">
+              <Image
+                src="/assets/icons/cloud-secure.svg"
+                alt="secure"
+                width={24}
+                height={24}
+                className="animate-bounce"
+              />
+              Secure Cloud Storage
+            </h2>
+          </div>
+
+          {/* Form container */}
+          <div className="relative overflow-hidden rounded-2xl backdrop-blur-xl">
+            <div className="absolute inset-0 bg-white/80" />
+            <div className="relative p-8">
+              {/* Decorative corners */}
+              <div className="absolute left-0 top-0 h-16 w-16 border-l-2 border-t-2 border-brand/20" />
+              <div className="absolute bottom-0 right-0 h-16 w-16 border-b-2 border-r-2 border-brand/20" />
+
+              {children}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-500">
+            <a href="#" className="hover:text-brand">
+              Privacy Policy
+            </a>
+            <span>•</span>
+            <a href="#" className="hover:text-brand">
+              Terms of Service
+            </a>
           </div>
         </div>
-      </section>
-      <section className="flex flex-1 flex-col items-center bg-white p-4 py-10 lg:justify-center lg:p-10 lg:py-0">
-        <div className="mb-16 lg:hidden">
-          <Image
-            src={"/logo-full-brand.svg"}
-            alt="logo"
-            width={224}
-            height={82}
-            className="h-auto w-[200px] lg:w-[250px]"
-          />
-        </div>
-      </section>
-      {children}
+      </div>
     </div>
   );
 };
