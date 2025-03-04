@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { TbCloud, TbShieldLock } from "react-icons/tb";
+import Image from "next/image";
 
 const AuthLayoutClient = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -43,22 +44,20 @@ const AuthLayoutClient = ({ children }: { children: React.ReactNode }) => {
           transition={{ duration: 0.5 }}
         >
           <motion.div
-            className="mb-6 flex justify-center"
+            className="mb-4 flex justify-center"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="relative flex items-center gap-2 text-2xl font-bold text-brand">
-              <TbCloud className="h-8 w-8" />
+            <div className="relative flex flex-col w-full items-center text-2xl font-bold text-brand ">
+              <Image
+                src="/assets/images/rawCloud.png"
+                alt="logo"
+                width={100}
+                height={100}
+                className="hidden h-auto md:block"
+              />
               Raw Cloud
+              <p className="text-gray-500 text-sm"> Secure Cloud Storage</p>
             </div>
-          </motion.div>
-          <motion.div
-            className="flex items-center justify-center gap-2 text-xl font-medium text-gray-600"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <TbShieldLock className="h-6 w-6 text-brand" />
-            Secure Cloud Storage
           </motion.div>
         </motion.div>
 
