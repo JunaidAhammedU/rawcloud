@@ -1,5 +1,17 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+# RawCloud
+
+RawCloud is a simple and efficient cloud storage solution built with Next.js. It provides secure file storage and sharing capabilities with a clean, modern interface.
+
+## Features
+
+- Secure file upload and storage
+- Easy file sharing
+- Modern, responsive interface
+- Real-time updates
+- Multi-platform support
+
 ## Getting Started
 
 First, run the development server:
