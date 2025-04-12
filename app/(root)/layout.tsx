@@ -6,6 +6,7 @@ import { getCurrentUser } from "@/lib/actions/user.action";
 import { Toaster } from "@/components/ui/toaster";
 export const dynamic = "force-dynamic";
 
+// This layout is used for the root.
 const layout = async ({ children }: { children: React.ReactNode }) => {
   try {
     const currentUser = await getCurrentUser();
